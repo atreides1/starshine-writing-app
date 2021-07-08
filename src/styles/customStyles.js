@@ -7,7 +7,6 @@ const customStyles = makeStyles((theme) => {
         root: {
             display: 'flex',
             padding: 20,
-            // flexGrow: 1,
         },
         logo: {
             flexGrow: 1,
@@ -17,9 +16,8 @@ const customStyles = makeStyles((theme) => {
             cursor: "pointer"
         },
         field: {
-            // marginTop: 20,
+            marginTop: 20,
             marginBottom: 20,
-            // display: "inline"
         },
         drawer: {
             width: drawerWidth

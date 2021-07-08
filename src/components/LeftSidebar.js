@@ -1,5 +1,4 @@
-import Button from "@material-ui/core/Button";
-import { Typography, IconButton, Drawer, List, ListItem, ListItemText } from "@material-ui/core";
+import { Button, Typography, IconButton, Drawer, List, ListItem, ListItemText } from "@material-ui/core";
 import LibraryAddIcon from "@material-ui/icons/LibraryAdd";
 import AddIcon from "@material-ui/icons/Add";
 import customStyles from "../styles/customStyles";
@@ -9,8 +8,13 @@ function ChapterTab(props) {
 
   return (
     <ListItem
-      style={props.isSelected ? { border: "solid" } : { color: "#b3b3b3" }}
+      style={
+        props.isSelected
+          ? { border: "solid", backgroundColor: "rgba(255, 179, 0, 0.4)" }
+          : { color: "#b3b3b3" }
+      }
       className={classes.tab}
+      divider
       onClick={(e) => {
         props.setCurrentSection(props.chapter.uuid);
       }}
@@ -36,13 +40,18 @@ function StoryTab(props) {
     <div>
       <List>
         <ListItem
-          style={isSelected ? { border: "solid" } : {}}
+          style={
+            isSelected
+              ? { border: "solid", backgroundColor: "rgba(255, 179, 0, 0.4)" }
+              : {}
+          }
           className={classes.tab}
+          divider
           onClick={() => {
             props.setCurrentSection(props.story.uuid);
           }}
         >
-          <ListItemText primary={props.story.title} />
+          <ListItemText primary={<Typography variant="h6">{props.story.title}</Typography>} />
         </ListItem>
         <List>
           {chapterTabs}
@@ -81,13 +90,13 @@ function LeftSidebar(props) {
       elevation={6}
     >
       <List>
-        <ListItem>
+        <ListItem divider>
         <ListItemText primary={
-          <Typography variant="h5">Stories</Typography>
+          <Typography variant="h5">Story List</Typography>
         }/>
         </ListItem>
-
       </List>
+
       {storyTabs}
       <Button
         variant="outlined"

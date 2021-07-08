@@ -1,6 +1,4 @@
-// import { createMuiTheme } from "@material-ui/core/styles";
 import { createTheme } from "@material-ui/core/styles";
-// import { purple } from "@material-ui/core/colors";
 import { grey } from "@material-ui/core/colors";
 import { amber } from "@material-ui/core/colors";
 import { red } from "@material-ui/core/colors";
@@ -12,8 +10,7 @@ const theme = createTheme({
       main: amber["600"], //#ffb300
     },
     secondary: {
-      main: grey["900"], //purple["600"],
-      // We don't need to set the text colour as MUI will work this out
+      main: grey["900"],
     },
     error: {
       main: red["600"],

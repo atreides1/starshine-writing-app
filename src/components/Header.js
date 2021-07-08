@@ -15,11 +15,9 @@ function Logo() {
         variant="subtitle1"
         gutterBottom
         color="textSecondary"
-        // style={{color: "#b3b3b3"}}
       >
         Distraction-free Writing
       </Typography>
-      {/* <h5 style={{ color: "#b3b3b3" }}>Distraction-free Writing</h5> */}
     </div>
   );
 }
@@ -53,7 +51,7 @@ function LoginForm(props) {
           onChange={(e) => setFormValue(e.target.value)}
           error={formError}
         />
-        <Button type="submit" color="primary" variant="contained" size="medium">
+        <Button className={classes.field} type="submit" color="primary" variant="contained" size="medium">
           Login
         </Button>
       </form>
@@ -82,13 +80,11 @@ function Header(props) {
   return (
     <div className={classes.root}>
     <AppBar 
-      // position="sticky"
       color="secondary"
       elevation={0}
       className={classes.appBar}
     >
     <Toolbar>
-    {/* // <div> */}
         <Logo />
         <Login user={props.user} onLogin={props.onLogin} />
     </Toolbar>
@@ -97,5 +93,4 @@ function Header(props) {
   );
 }
 
-export { Header };
-// export { Logo, Login };
+export default Header;
