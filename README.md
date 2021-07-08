@@ -2,7 +2,7 @@
 
 A space for distraction-free writing. Can there be 'spaces' on the web? I suppose I could describe this as a RESTful writing app, built with the MERN stack... but I think it's nice to think of it as a writing space.
 
-![Starshine Interface](".\screenshots\starshine-snip.png")
+![Starshine Interface]("screenshots/starshine-snip.png)
 
 ## Motivation
 
