@@ -32,5 +32,6 @@ Starshine is a writing app for quick projects (think nanowrimo) where writers ca
 
 ## Todo
 
+- UI fixes for mobile
 - Actual user authentication system
 - Edit titles by double-clicking sidebar tabs
