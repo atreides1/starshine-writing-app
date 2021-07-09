@@ -27,3 +27,8 @@ Starshine is a writing app for quick projects (think nanowrimo) where writers ca
 
 - Easy to navigate UI 
 - Stories and chapters easily export to Word
+
+## Todo
+
+- Actual user authentication system
+- Edit titles by double-clicking sidebar tabs
