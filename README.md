@@ -2,6 +2,8 @@
 
 A space for distraction-free writing. Can there be 'spaces' on the web? I suppose I could describe this as a RESTful writing app, built with the MERN stack... but I think it's nice to think of it as a writing space.
 
+Check it out [here](https://starshine.mercybhakta.com/)!
+
 ![Starshine Interface](https://github.com/atreides1/starshine-writing-app/blob/b4009674fc844e5f9864657a6f59df197de58a5f/screenshots/starshine-snip.png)
 
 ## Motivation
