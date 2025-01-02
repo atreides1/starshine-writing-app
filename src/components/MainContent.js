@@ -1,5 +1,6 @@
 import { Chapter, Story } from "./Sections";
 import Card from '@material-ui/core/Card';
+import React from "react";
 
 function MainContent(props) {
   let displayedSection;

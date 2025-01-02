@@ -3,6 +3,7 @@ import  AppBar  from "@material-ui/core/AppBar";
 import  Toolbar  from "@material-ui/core/Toolbar";
 import { Typography, Button, TextField } from "@material-ui/core";
 import customStyles from "../styles/customStyles";
+import React from "react";
 
 function Logo() {
   const classes = customStyles();
