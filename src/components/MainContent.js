@@ -1,6 +1,7 @@
-import { Chapter, Story } from "./Sections";
-import Card from '@material-ui/core/Card';
 import React from "react";
+import { Chapter, Story } from "./Sections";
+import Card from '@mui/material/Card';
+import Box from "@mui/material/Box";
 
 function MainContent(props) {
   let displayedSection;
@@ -40,9 +41,20 @@ function MainContent(props) {
 
     // Case 3: Nothing is selected
   } else {
-    displayedSection = <p>Try creating or selecting a story!</p>;
+    displayedSection = (
+    <p 
+      sx={{ justifyContent: "center" }}>
+        Try creating or selecting a story!
+    </p>
+  );
   }
-  return <div id="displayed-section">{displayedSection}</div>;
+  return (
+    <Box sx={{ width: "100%", maxWidth: { sm: "100%", md: "1700px" } }}>
+      <div id="displayed-section" sx={{ justifyContent: "center" }}>
+        {displayedSection}
+      </div>
+    </Box>
+  );
 }
 
 export default MainContent;

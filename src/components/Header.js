@@ -1,30 +1,25 @@
-import { useState } from "react";
-import  AppBar  from "@material-ui/core/AppBar";
-import  Toolbar  from "@material-ui/core/Toolbar";
-import { Typography, Button, TextField } from "@material-ui/core";
-import customStyles from "../styles/customStyles";
 import React from "react";
+import { useState } from "react";
+import Stack from "@mui/material/Stack";
+import Box from "@mui/material/Box";
+import { Typography, Button, TextField } from "@mui/material";
+
+const drawerWidth = 240;
 
 function Logo() {
-  const classes = customStyles();
   return (
-    <div id="logo" className={classes.logo}>
+    <Stack>
       <Typography variant="h6" component="h2">
         Starshine
       </Typography>
-      <Typography
-        variant="subtitle1"
-        gutterBottom
-        color="textSecondary"
-      >
+      <Typography variant="subtitle1" gutterBottom color="textSecondary">
         Distraction-free Writing
       </Typography>
-    </div>
+    </Stack>
   );
 }
 
 function LoginForm(props) {
-  const classes = customStyles();
   const [formValue, setFormValue] = useState("");
   const [formError, setFormError] = useState(false);
 
@@ -45,14 +40,13 @@ function LoginForm(props) {
         onSubmit={handleSubmit}
       >
         <TextField
-          className={classes.field}
           label="user"
           variant="outlined"
           size="small"
           onChange={(e) => setFormValue(e.target.value)}
           error={formError}
         />
-        <Button className={classes.field} type="submit" color="primary" variant="contained" size="medium">
+        <Button type="submit" color="primary" variant="contained" size="medium">
           Login
         </Button>
       </form>
@@ -77,20 +71,26 @@ function Login(props) {
 }
 
 function Header(props) {
-  const classes = customStyles();
   return (
-    <div className={classes.root}>
-    <AppBar 
-      color="secondary"
-      elevation={0}
-      className={classes.appBar}
+    <Stack
+      direction="row"
+      sx={{
+        display: { xs: "none", md: "flex" },
+        width: `calc(100% - ${drawerWidth}px)`,
+        alignItems: { xs: "flex-start", md: "center" },
+        justifyContent: "space-between",
+        maxWidth: { sm: "100%", md: "1700px" },
+        marginLeft: "auto",
+      }}
+      spacing={2}
     >
-    <Toolbar>
+      <Box pl={2}>
         <Logo />
+      </Box>
+      <Box pr={2}>
         <Login user={props.user} onLogin={props.onLogin} />
-    </Toolbar>
-    </AppBar> 
-    </div>
+      </Box>
+    </Stack>
   );
 }
 

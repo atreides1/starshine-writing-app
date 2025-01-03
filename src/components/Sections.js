@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import ContentEditable from "react-contenteditable";
-import { Card, CardHeader, CardContent, Typography, IconButton } from "@material-ui/core";
-import { Delete } from "@material-ui/icons";
+import { Card, CardHeader, CardContent, Typography, IconButton } from "@mui/material";
+import { Delete } from "@mui/icons-material";
 
 function Chapter(props) {
   const title = useRef(props.chapterTitle);
@@ -20,15 +20,15 @@ function Chapter(props) {
   };
 
   return (
-    <div className="chapter">
-      {/* Chapter Title */}
+    (
+    <Card>
       <CardHeader
         action={
           <IconButton
             onClick={() => {
               props.delete(props.uuid);
             }}
-          >
+            size="large">
             <Delete />
           </IconButton>
         }
@@ -42,8 +42,6 @@ function Chapter(props) {
           </Typography>
         }
       ></CardHeader>
-
-      {/* Chapter Content */}
       <CardContent>
         <Typography>
           <ContentEditable
@@ -53,7 +51,8 @@ function Chapter(props) {
           />
         </Typography>
       </CardContent>
-    </div>
+    </Card>
+    )
   );
 }
 
@@ -63,7 +62,6 @@ function Story(props) {
   const handleTitleChange = (e) => {
     title.current = e.target.value;
     let title_no_html = (' ' + e.target.value).slice(1).replace( /(<([^>]+)>)/ig, '').replace("&nbsp", ' ').replace(";", ' ')
-    console.log(title_no_html)
     let updatedStory = { title: title_no_html };
     props.update(props.uuid, updatedStory);
   };
@@ -80,24 +78,24 @@ function Story(props) {
   ));
 
   return (
-      <Card elevation={6}>
-        <CardHeader
-          action={
-            <IconButton onClick={() => props.delete(props.uuid)}>
-              <Delete />
-            </IconButton>
-          }
-          title={
-            <ContentEditable
-              html={"<h2>" + props.title + "</h2>"}
-              disabled={false}
-              onChange={handleTitleChange}
-            />
-          }
-        >
-        </CardHeader>
-        {chapters}
-      </Card>
+    (<Card elevation={6}>
+      <CardHeader
+        action={
+          <IconButton onClick={() => props.delete(props.uuid)} size="large">
+            <Delete />
+          </IconButton>
+        }
+        title={
+          <ContentEditable
+            html={"<h2>" + props.title + "</h2>"}
+            disabled={false}
+            onChange={handleTitleChange}
+          />
+        }
+      >
+      </CardHeader>
+      {chapters}
+    </Card>)
   );
 }
 export { Chapter, Story };

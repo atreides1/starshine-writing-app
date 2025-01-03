@@ -1,11 +1,24 @@
-import { Button, Typography, IconButton, Drawer, List, ListItem, ListItemText } from "@material-ui/core";
-import LibraryAddIcon from "@material-ui/icons/LibraryAdd";
-import AddIcon from "@material-ui/icons/Add";
-import customStyles from "../styles/customStyles";
+import { Button, Typography, IconButton, List, ListItem, ListItemText } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import LibraryAddIcon from "@mui/icons-material/LibraryAdd";
+import AddIcon from "@mui/icons-material/Add";
+import MuiDrawer, { drawerClasses } from "@mui/material/Drawer";
 import React from "react";
 
+const drawerWidth = 240;
+
+const Drawer = styled(MuiDrawer)({
+  width: drawerWidth,
+  flexShrink: 0,
+  boxSizing: "border-box",
+  mt: 10,
+  [`& .${drawerClasses.paper}`]: {
+    width: drawerWidth,
+    boxSizing: "border-box",
+  },
+});
+
 function ChapterTab(props) {
-  const classes = customStyles();
 
   return (
     <ListItem
@@ -14,7 +27,6 @@ function ChapterTab(props) {
           ? { border: "solid", backgroundColor: "rgba(255, 179, 0, 0.4)" }
           : { color: "#b3b3b3" }
       }
-      className={classes.tab}
       divider
       onClick={(e) => {
         props.setCurrentSection(props.chapter.uuid);
@@ -26,7 +38,6 @@ function ChapterTab(props) {
 }
 
 function StoryTab(props) {
-  const classes = customStyles();
   let chapterTabs = props.story.chapters.map((chapter) => (
     <ChapterTab
       chapter={chapter}
@@ -46,13 +57,14 @@ function StoryTab(props) {
               ? { border: "solid", backgroundColor: "rgba(255, 179, 0, 0.4)" }
               : {}
           }
-          className={classes.tab}
           divider
           onClick={() => {
             props.setCurrentSection(props.story.uuid);
           }}
         >
-          <ListItemText primary={<Typography variant="h6">{props.story.title}</Typography>} />
+          <ListItemText
+            primary={<Typography variant="h6">{props.story.title}</Typography>}
+          />
         </ListItem>
         <List>
           {chapterTabs}
@@ -60,6 +72,8 @@ function StoryTab(props) {
             <IconButton
               color="primary"
               onClick={() => props.addNewChapter(props.story.uuid)}
+              size="large"
+              sx={{ margin: "auto" }}
             >
               <LibraryAddIcon fontSize="small" edge="end" />
             </IconButton>
@@ -71,7 +85,6 @@ function StoryTab(props) {
 }
 
 function LeftSidebar(props) {
-  const classes = customStyles();
   let storyTabs = props.stories.map((story) => (
     <StoryTab
       story={story}
@@ -84,17 +97,19 @@ function LeftSidebar(props) {
 
   return (
     <Drawer
-      className={classes.drawer}
       variant="permanent"
-      anchor="left"
-      classes={{ paper: classes.drawerPaper }}
-      elevation={6}
+      sx={{
+        display: { xs: "none", md: "block" },
+        [`& .${drawerClasses.paper}`]: {
+          backgroundColor: "background.paper",
+        }
+      }}
     >
       <List>
         <ListItem divider>
-        <ListItemText primary={
-          <Typography variant="h5">Story List</Typography>
-        }/>
+          <ListItemText
+            primary={<Typography variant="h5">Story List</Typography>}
+          />
         </ListItem>
       </List>
 

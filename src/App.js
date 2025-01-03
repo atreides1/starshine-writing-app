@@ -7,13 +7,11 @@ import LeftSidebar from './components/LeftSidebar';
 import MainContent from "./components/MainContent";
 import SaveSnackbar from "./components/SaveSnackbar";
 
-import { ThemeProvider } from "@material-ui/styles";
-import { CssBaseline, Container, Button, ButtonGroup } from '@material-ui/core';
-import customStyles from "./styles/customStyles"
+import { ThemeProvider } from "@mui/material/styles";
+import { CssBaseline, Button, ButtonGroup, Box, Stack } from '@mui/material';
 import theme from "./styles/theme";
 
 function App() {
-  const classes = customStyles();
 
   const defaultStory = [
     {
@@ -243,8 +241,8 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <div className={classes.root}>
-        <Header user={user} onLogin={setUser} />
+      <Header user={user} onLogin={setUser} />
+      <Box sx={{ display: "flex" }}>
         <LeftSidebar
           stories={stories}
           currentSection={currentSectionUUID}
@@ -252,34 +250,46 @@ function App() {
           addNewStory={addNewStory}
           addNewChapter={addNewChapter}
         />
-        <Container>
-          <div className={classes.toolbar}></div>
-          <div className={classes.toolbar}></div>
-
-          <MainContent
-            stories={stories}
-            currentSection={currentSectionUUID}
-            updateSection={updateSection}
-            deleteSection={deleteSection}
-          />
-          {/* Snackbar for saves */}
-          <SaveSnackbar viewSnackbar={viewSnackbar} setViewSnackbar={setViewSnackbar} />
-          {/* A "cheaty" way of adding equal space before and after these buttons */}
-          <div className={classes.toolbar}></div>
-          <ButtonGroup>
-            <Button variant="contained" color="primary" onClick={save}>
-              Save
-            </Button>
-            <Button variant="contained" onClick={deleteUserData}>
-              Delete All
-            </Button>
-            <Button variant="contained" onClick={exportHTML}>
-              Export to Word
-            </Button>
-          </ButtonGroup>
-          <div className={classes.toolbar}></div>
-        </Container>
-      </div>
+        <Box
+          sx={(theme) => ({
+            flexGrow: 1,
+            overflow: "auto",
+          })}
+        >
+          <Stack
+            spacing={2}
+            sx={{
+              alignItems: "center",
+              mx: 3,
+              pb: 5,
+              mt: { xs: 8, md: 0 },
+            }}
+          >
+            <MainContent
+              stories={stories}
+              currentSection={currentSectionUUID}
+              updateSection={updateSection}
+              deleteSection={deleteSection}
+            />
+            {/* Snackbar for saves */}
+            <SaveSnackbar
+              viewSnackbar={viewSnackbar}
+              setViewSnackbar={setViewSnackbar}
+            />
+            <ButtonGroup>
+              <Button variant="contained" color="primary" onClick={save}>
+                Save
+              </Button>
+              <Button variant="contained" onClick={deleteUserData}>
+                Delete All
+              </Button>
+              <Button variant="contained" onClick={exportHTML}>
+                Export to Word
+              </Button>
+            </ButtonGroup>
+          </Stack>
+        </Box>
+      </Box>
     </ThemeProvider>
   );
 }
