@@ -21,7 +21,11 @@
     "uuid": "^11.0.3",
     "web-vitals": "^4.2.4"
   },
+  "resolutions": {
+    "postcss": "8.4.49"
+  },
   "scripts": {
+    "preinstall": "npx npm-force-resolutions",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
