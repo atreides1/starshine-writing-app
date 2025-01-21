@@ -22,7 +22,7 @@
     "web-vitals": "^4.2.4"
   },
   "resolutions": {
-    "postcss": "8.4.49"
+    "postcss": ">=8.4.49"
   },
   "scripts": {
     "preinstall": "npx npm-force-resolutions",
